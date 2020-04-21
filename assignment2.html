@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+
+<title>Assignment 2</title>
+<header>
+    <link rel="stylesheet" href="assignment2.css">
+</header>
+
+<body>
+    <div id="myDiv" class="H1" onmouseover="rotateYDIV()" style="transform: rotateY(360deg);" onmouseleave="stopAnimation()">
+        Burning Man Festival 2020
+    </div>
+    <br>
+    <div class=" shadow ">
+        <p>​AUG 30 - SEPT 7</p>
+    </div>
+    <h1 class="H2 ">Welcome to the PARADISE!!!</h1>
+    <div class=column>
+        <div class="container1 ">
+            <u><h1><span>Menu</span></h1></u>
+            <ul>
+                <li> <a href="https://burningman.org/event/ ">The Event</a></li>
+                <li> <a href="https://burningman.org/culture/ ">The Culture</a></li>
+                <li> <a href="https://burningman.org/network/ ">The Network</a></li>
+            </ul>
+        </div>
+        <div class="container2 ">
+            <div class="3Dfront "><img src="https://media.heartlandtv.com/images/Burning+man.jpg "></div>
+
+        </div>
+        <div class="container3">
+            <u><h1><span>About burning man festival</span></h1></u>
+            <section>
+                <p>Burning Man is a network of people inspired by the values reflected in the Ten Principles and united in the pursuit of a more creative and connected existence in the world. Throughout the year we work to build Black Rock City, home of
+                    the largest annual Burning Man gathering, and nurture the distinctive culture emerging from that experience. The hub of this global network is the non-profit Burning Man Project, headquartered in San Francisco, California.<br> <a href="https://www.viagogo.com/Festival-Tickets/US-Festivals/Burning-Man-Tickets?AffiliateID=49&adposition=&PCID=PSUSGOOFESBURNIDB55501CCC&AdID=416114650310&MetroRegionID=&psc=%2c&ps=%2c&ps_p=0&ps_c=9230776245&ps_ag=96325587529&ps_tg=kwd-320231152794&ps_ad=416114650310&ps_adp=%2c&ps_fi=%2c&ps_li=%2c&ps_lp=9003566&ps_n=g&ps_d=c&gclid=CjwKCAiAvonyBRB7EiwAadauqfxgPwnjf1qIpM0jLTs8EQrXsDZcrqaaBMn_jfYnsLBbNnB36gCGtBoCvYgQAvD_BwE ">Click me </a>to
+                    <i><b>buy tickets</b></i> </p>
+
+            </section>
+        </div>
+
+    </div>
+
+
+</body>
+<script>
+    var x, y, n = 0,
+        ny = 0,
+        rotINT, rotYINT  
+    var stopAnimationBool = false
+
+    function stopAnimation() {
+        stopAnimationBool = true
+    }
+
+
+
+    function rotateYDIV() {
+        stopAnimationBool = false
+        y = document.getElementById("myDiv")
+        clearInterval(rotYINT)
+        rotYINT = setInterval("startYRotate()", 3)
+    }
+
+    function startRotate() {
+        n = n + 1
+        x.style.transform = "rotate(" + n + "deg)"
+        x.style.webkitTransform = "rotate(" + n + "deg)"
+        x.style.OTransform = "rotate(" + n + "deg)"
+        x.style.MozTransform = "rotate(" + n + "deg)"
+        if (n == 180 || n == 360) { 
+            if (stopAnimation) clearInterval(rotINT)
+            if (n == 360) {
+                n = 0
+            }
+        }
+    }
+
+    function startYRotate() {
+        ny = ny + 1
+        y.style.transform = "rotateY(" + ny + "deg)"
+        y.style.webkitTransform = "rotateY(" + ny + "deg)"
+        y.style.OTransform = "rotateY(" + ny + "deg)"
+        y.style.MozTransform = "rotateY(" + ny + "deg)"
+        if (ny == 180 || ny >= 360) {
+            if (ny >= 360) {
+                ny = 0  
+                if (stopAnimationBool) clearInterval(rotYINT)
+            }
+        }
+    }
+</script>
+
+</html>

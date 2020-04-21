@@ -1,0 +1,162 @@
+<html>
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <body>
+        <button onclick="onClick()">Permission</button>
+        <button onclick="redrawAnimation()">Animation</button>
+        <canvas id="riley"></canvas>
+        <script>
+            var requestAnimationFrame = window.requestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.msRequestAnimationFrame;
+            var timeStart = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+
+            var now = timeStart;
+            var canvas = document.getElementById("riley");
+            var c = canvas.getContext("2d");
+
+            function clearCanvas() {
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                c.clearRect(0, 0, canvas.width, canvas.height);
+
+                c.strokeStyle = "red";
+                c.linewidth = 5;
+
+            }
+
+            var start = null;
+
+            var toggle = false;
+
+            function originalColors() {
+                clearCanvas()
+                animate("red", "gold")
+            }
+
+            function animate(top, bottom) {
+                var px = canvas.width;
+                var py = canvas.height / 2;
+                var s = 0;
+                var d = canvas.height;
+
+                for (var i = 0; i < 15; i = i + 1) {
+                    var y = i * 2;
+                    var z = 1 * i;
+                    var py = py + 3;
+                    var px = px + 15;
+                    drawLine(z, 0, px, py);
+                    c.strokeStyle = bottom;
+                    oppline(px, py, s, d);
+                    c.strokeStyle = top;
+                }
+            }
+
+            function redrawAnimation() {
+                clearCanvas()
+                animate("gold", "red")
+
+                setTimeout(function() {
+                    clearCanvas()
+                    animate("red", "gold")
+                }, 2000);
+            }
+
+
+
+
+
+
+            function drawLine(x1, y1, x2, y2) {
+                c.save();
+
+                c.beginPath();
+                c.moveTo(x1, y1);
+                c.lineTo(x2, y2);
+                c.stroke();
+                c.fill();
+
+
+            }
+
+            function oppline(x1, y1, x2, y2) {
+                c.beginPath();
+                c.moveTo(x1, y1);
+                c.lineTo(x2, y2);
+                c.stroke();
+
+            }
+
+            if (window.DeviceMotionEvent) {
+                console.log("DeviceMotionEvent supported");
+            }
+
+
+            function onClick() {
+                // feature detect
+                if (typeof DeviceMotionEvent.requestPermission === 'function') {
+                    window.DeviceMotionEvent.requestPermission()
+                        .then(response => {
+                            if (response === 'granted') {
+                                alert('granted')
+                                window.addEventListener('devicemotion',
+                                    () => {
+                                        window.requestAnimationFrame(originalColors)
+                                    },
+                                    (e) => {
+                                        throw e
+                                    }
+                                )
+                            } else {
+                                alert('not granted')
+                            }
+                        })
+                        .catch(e => {
+                            console.error(e)
+                            alert("error")
+                        })
+                } else {
+                    // handle regular non iOS 13+ devices
+                }
+            }
+
+            clearCanvas()
+
+            animate("red", "gold")
+
+
+
+            var timeend = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+            var diff = timeend - timeStart;
+            console.log(diff, Date.now());
+        </script>
+        <style>
+            body {
+                background-color: #000000;
+                background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
+            }
+            
+            canvas {
+                background-color: rgba(46, 56, 56, 0.349);
+                display: block;
+            }
+            
+            @media (max-width: 500px) {
+                #riley {
+                    width: fit-content;
+                    height: fit-content;
+                }
+            }
+        </style>
+    </body>
+
+</html>

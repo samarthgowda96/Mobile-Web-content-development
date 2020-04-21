@@ -1,0 +1,179 @@
+h1 {
+    color: white;
+    margin: auto;
+}
+
+.sam {
+    text-shadow: black 10px 0 20px;
+    color: rgb(139, 0, 0);
+    font-family: 'Alegreya Sans SC';
+}
+
+.boxes {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: repeat(1, 1fr);
+    grid-template-areas: "one one one one" "two two three four";
+    margin: 25;
+}
+
+body {
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    ;
+}
+
+.boxes div.name {
+    margin-top: 75px;
+    padding: 110px;
+    font-size: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+}
+
+.boxes>.name p {
+    font-size: 35px;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    text-shadow: black 10px 0 50px;
+    color: rgb(153, 153, 0)
+}
+
+.boxes img {
+    height: 55%;
+    width: 500px;
+    padding: 60px;
+    margin: 70;
+    background-color: black;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    border-radius: 25px;
+    border-style: ridge;
+    border-color: rgb(139, 0, 0);
+}
+
+.boxes button {
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    padding: 10px;
+    margin-left: 50px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 20;
+    align-items: center;
+    box-shadow: none;
+    border-radius: 25%;
+    color: azure;
+    text-shadow: black 10px 0 20px;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    border-color: rgb(139, 0, 0);
+}
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    width: 139;
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: inline-block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.first {
+    margin-left: 10%;
+    align-content: center;
+    margin-top: 1%;
+}
+
+.first img {
+    border-radius: 50%;
+    border: 2px solid whitesmoke;
+    align-items: center;
+    border-color: rgb(139, 0, 0);
+}
+
+@media screen and (max-width: 700px) {
+    section.boxes {
+        display: block;
+    }
+    body {
+        margin: 0px;
+    }
+    .first img {
+        display: block;
+        flex-direction: column;
+    }
+    section.interest {
+        display: inline-block;
+    }
+}
+
+.interest {
+    width: 92%;
+    margin-left: 115px;
+    margin-right: auto;
+    padding: 32px;
+}
+
+.interestoutter {
+    display: flex;
+}
+
+.interestinner {
+    border: 2px solid whitesmoke;
+    border-color: rgb(99, 3, 3);
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 15px;
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    text-align: center;
+    border-radius: 25px;
+    margin-left: auto;
+    color: whitesmoke;
+}
+
+h2 {
+    margin-left: 120px;
+    text-align: center;
+    font-size: 32px;
+    color: rgb(153, 153, 0);
+    text-shadow: black 10px 0 30px;
+    font-family: 'Alegreya Sans SC';
+}
+
+@media screen and (max-width:700px) {
+    .interestoutter {
+        padding-bottom: 40px;
+        flex-direction: column;
+    }
+    h2 {
+        margin-top: 900px;
+        text-align: center;
+    }
+}
